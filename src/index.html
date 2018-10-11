@@ -1,0 +1,92 @@
+<html>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="main.css">
+
+	<body>
+		<textarea id="source" style="display:none"></textarea>
+
+		<div id="qrCodeViewer">
+			<div>
+				<h5>Connect Clicker</h5>
+				<div id="qrCode"></div>
+				
+				Scan to Connect Clicker
+			</div>
+		</div>
+		
+		<script src="socket.io.js"></script>
+
+		<script src="remark.min.js"></script>
+		<script src="qrcode.min.js"></script>
+		
+		<script>
+			let shift_exists,
+			socket, 
+			full_ip,
+			slideshow;
+
+			var findIP = new Promise(r=>{var w=window,a=new (w.RTCPeerConnection||w.mozRTCPeerConnection||w.webkitRTCPeerConnection)({iceServers:[]}),b=()=>{};a.createDataChannel("");a.createOffer(c=>a.setLocalDescription(c,b,b),b);a.onicecandidate=c=>{try{c.candidate.candidate.match(/([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/g).forEach(r)}catch(e){}}})
+			findIP.then(ip => (init(ip))).catch(e => console.error(e))
+			
+			function init(ip){
+				full_ip = 'http://' + ip + ':5000';
+				document.addEventListener("keyup", function(e) {
+					if(e.keyCode === 16){
+						if(!shift_exists){
+							shift_exists = true;
+
+							setTimeout(() => {
+								shift_exists = false;
+							}, 300);
+
+							return;
+						}
+						
+						document.querySelector("#qrCodeViewer").classList.add('visible');
+					}
+					else if(e.keyCode === 27){
+						document.querySelector("#qrCodeViewer").classList.remove('visible');
+					}
+				});
+				
+				socket = io.connect(full_ip);
+           
+				socket.on('setup', function(setup){
+					document.querySelector("#source").innerHTML = setup.slides_markdown;
+
+					slideshow = remark.create();
+					socket.emit('setup_complete');
+
+					new QRCode(document.querySelector("#qrCode"), {
+						text: full_ip,
+						width: 250,
+						height: 250,
+					});
+				});
+				
+				socket.on('SLIDESHOW_ACTION', function(action){
+					switch (action.type) {
+						case 'next':
+							slideshow.gotoNextSlide();
+							break;
+
+						case 'prev':
+							slideshow.gotoPreviousSlide();
+							break;
+
+						case 'go':
+							slideshow.gotoSlide(action.data.slide);
+							break;
+					
+						default:
+							break;
+					}
+				});
+			}
+			
+			function showQrCode(){
+				alert(full_ip);
+			}
+		</script>
+	</body>
+</html>
