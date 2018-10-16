@@ -62,7 +62,17 @@
 						width: 250,
 						height: 250,
 					});
+
+					slideshow.gotoFirstSlide();
+
+					setListener(0)
+
+					setupSlideListeners();
 				});
+
+				socket.on('new_user', function(){
+					document.querySelector("#qrCodeViewer").classList.remove('visible');
+				})
 				
 				socket.on('SLIDESHOW_ACTION', function(action){
 					switch (action.type) {
@@ -86,6 +96,56 @@
 			
 			function showQrCode(){
 				alert(full_ip);
+			}
+			
+			function setupSlideListeners(){
+				slideshow.on('showSlide', function (slide) {
+					// console.log(slide);
+					setListener(slide.getSlideIndex());
+				});
+
+				slideshow.on('hideSlide', function (slide) {
+					if(!slide.properties.actions || !slide.properties.actions.length)
+						return;
+
+					socket.removeListener('SLIDE_ACTION');
+					// console.log("Slide had actions:");
+				});
+			}
+
+			function setListener(index){
+				const slide = slideshow.getSlides()[index];
+				if(!slide.properties.actions || !slide.properties.actions.length)
+						return;
+
+				// console.log("Slide has actions:");
+
+				socket.on('SLIDE_ACTION', function(action){
+					const parent = document.querySelectorAll('.a-slide')[index];
+					console.log("Slide action happened!!!!");
+
+					switch (action.type) {
+						case 'revealdown':
+							console.log('reveal hidden');
+							parent.querySelector('.to-reveal').classList.add('visible');
+							break;
+						
+						case 'revealup':
+							console.log('hide revealed');
+							parent.querySelector('.to-reveal').classList.remove('visible');
+							break;
+
+						case 'video':
+							console.log('video');
+							const src = parent.querySelector('iframe').getAttribute('src');
+							parent.querySelector('iframe').setAttribute('src', src + "&amp;autoplay=1");
+							
+							break;
+					
+						default:
+							break;
+					}
+				});
 			}
 		</script>
 	</body>

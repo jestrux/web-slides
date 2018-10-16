@@ -25,6 +25,14 @@
   padding: 0;
 }
 
+.to-reveal{
+  transition: opacity 0.35s ease-out cubic-bezier(0.215, 0.610, 0.355, 1);
+}
+
+.to-reveal:not(.visible){
+  opacity: 0;
+}
+
 /*SLIDES CSS*/
 .remark-container {
   background: #000000;

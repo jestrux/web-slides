@@ -23,14 +23,20 @@ io.on('connection', function(socket){
     slides_preview: slide_preview
   });
 
+  if(setup)
+    io.emit('new_user');
+
   socket.on('setup_complete', function(){      
     setup = true;
-    // io.emit('recieve', data);
     // socket.disconnect( console.log('sender disconnected'));
   });
   
   socket.on('SLIDESHOW_ACTION', function(action){
     io.emit('SLIDESHOW_ACTION', action);
+  });
+  
+  socket.on('SLIDE_ACTION', function(action){
+    io.emit('SLIDE_ACTION', action);
   });
 });
 

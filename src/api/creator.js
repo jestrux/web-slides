@@ -78,9 +78,30 @@ Creator.prototype.createSlides = function (slideshowSource) {
     });
   
     return slides.map( s => {
+      let actions, notes = [];
+
+      if(s.properties.actions && s.properties.actions.length){
+        actions = s.properties.actions.split(',').map(a => { 
+          const type = a.trim().substr(1, a.indexOf(']') - 1);
+          const title = a.trim().substr(a.indexOf(']') + 1);
+
+          return {type, title}
+        });
+      }
+      
+      if(s.properties.notes && s.properties.notes.length){
+        notes = s.properties.notes.split(',').map(a => { 
+          const title = a.trim().substr(1, a.indexOf(']') - 1);
+          const body = a.trim().substr(a.indexOf(']') + 1);
+
+          return {title, body}
+        });
+      }
+
       return {
         name: s.properties.name || 'Untitled',
-        notes: s.notes
+        actions,
+        notes
       }
     });
   }

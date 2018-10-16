@@ -1,7 +1,7 @@
 const SLIDES = module.exports = `
 name: Intro Slide
 background-image: url('http://annwalls.xyz/wp-content/uploads/2018/03/White-Wallpaper-159.jpg')
-class: center, middle, has-subitle
+class: a-slide, center, middle, has-subitle
 
 # The progressive in PWAs
 Progressively enhancing your web apps into PWAs
@@ -9,7 +9,7 @@ Progressively enhancing your web apps into PWAs
 ---
 
 name: About Me
-class: center, middle
+class: a-slide, center, middle
 
 # Who am i?
 
@@ -28,7 +28,7 @@ Front end developer **@ipfsoftwares**
 ---
 
 name: Javascript Enthusiast
-class: center, middle, center-text
+class: a-slide, center, middle, center-text
 
 ## Javascript enthusiast
 
@@ -45,7 +45,7 @@ Meme sharing app in **React**
 ---
 
 name: Agenda
-class: center, middle
+class: a-slide, center, middle
 
 # Agenda
 
@@ -62,8 +62,9 @@ class: center, middle
 ---
 
 name: What is a PWA
-class: middle
-
+class: a-slide, middle
+notes: How many are familiar with PWAs?
+actions: [reveal]Reveal defn.
 # What is a PWA?
 
 *TLWNR:*
@@ -71,19 +72,16 @@ class: middle
 * A Progressive Web App is a web app that has been enhanced to improve the user experience
 **based on the app's context**.
 
-*Mr speaker, Could you say that again but like make it longer?*
-
-Sure,
+.to-reveal[*Mr speaker, Could you say that again but like make it longer?*
 
 * A Progressive Web App (PWA) is a **web app** that uses **modern web technlogies** such as web app manifest, service workers and IndexedDB to deliver an experience that is **fast**, **reliable** and **engaging**.
-A PWA is expected to **harness the power of the platform** it's on and **gracefully adapt** to situation changes such as loss of internet connection.
-
-<--How many are familiar with PWAs-->
+A PWA is expected to **harness the power of the platform** it's on and **gracefully adapt** to situation changes such as loss of internet connection.]
 
 ---
 
 name: Do you need a PWA
-class: middle
+class: a-slide, middle
+notes: [Fast]Both in illusion and actuality,[Increased Engagement]Push notifications,[Native Feel]Live on home screen and app launcher
 
 ## Should you progressively enhance your web app?
 
@@ -91,11 +89,11 @@ class: middle
 
 Not convinced yet? Well here is a list(*coz well.....lists*)
 
-1. Fast (*both in illusion and actuality*)
+1. Fast
 
-1. Increased Engagement (*push notifications*)
+1. Increased Engagement
 
-1. Can feel native (*live on home screen and app launcher*)
+1. Can feel native
 
 1. Can continue working offline
 
@@ -104,7 +102,7 @@ Not convinced yet? Well here is a list(*coz well.....lists*)
 ---
 
 name: Patterns & Tech
-class: middle
+class: a-slide, middle
 
 # PWA Patterns and technologies
 
@@ -121,7 +119,8 @@ class: middle
 ---
 
 name: Flipkart Intro
-class: middle
+class: a-slide, middle
+actions: [reveal]Reveal defn.,[video]Play Demo
 
 # Demo time
 
@@ -140,14 +139,14 @@ After shipping their PWA:
 ---
 
 name: Flipkart Video
-class: full
+class: a-slide, full
 
 <iframe width="100%" height="100%" src="https://www.youtube.com/embed/RJ1h-GiRh1E?rel=0&amp;controls=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 ---
 
 name: Progressive Enhancement
-class: middle
+class: a-slide, middle
 
 # Progressive Enhancement
 
@@ -172,7 +171,7 @@ class: middle
 ---
 
 name: Make app small
-class: middle
+class: a-slide, middle
 
   ## Before you PWA
   
@@ -189,7 +188,7 @@ class: middle
 ---
 
 name: Make app fast
-class: middle
+class: a-slide, middle
 
   ## Before you PWA cont...
 
@@ -216,14 +215,14 @@ class: middle
 name: Dialer Gif
 background-image: url(https://assets.materialup.com/uploads/3b9b122c-205b-4adc-8571-1ded459f3e95/day-003---dial-pad.gif)
 
-class: dark
+class: a-slide, dark
 
 <!-- ![Dial pad](images/dialpad.gif) -->
 
 ---
 
 name: Make app nativey
-class: middle
+class: a-slide, middle
 ## Before you PWA cont...
   
 Give your app a native feel (*think beyond links and pages*)
@@ -247,7 +246,7 @@ Give your app a native feel (*think beyond links and pages*)
 ---
 
 name: Know your app / tools
-class: middle
+class: a-slide, middle
 ## PWA beyond the basics
 
 * Know your app
@@ -269,7 +268,7 @@ class: middle
 ---
 
 name: Test app
-class: middle
+class: a-slide, middle
 ## PWA beyond the basics cont...
 
 * Test your app with actual users
@@ -299,7 +298,7 @@ class: middle
 ---
 
 name: Fin
-class: center, middle
+class: a-slide, center, middle
 
 # Thankyou!
 `;
