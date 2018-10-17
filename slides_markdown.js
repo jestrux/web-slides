@@ -1,6 +1,5 @@
 const SLIDES = module.exports = `
 name: Intro Slide
-background-image: url('http://annwalls.xyz/wp-content/uploads/2018/03/White-Wallpaper-159.jpg')
 class: a-slide, center, middle, has-subitle
 
 # The progressive in PWAs
@@ -75,7 +74,7 @@ actions: [reveal]Reveal defn.
 .to-reveal[*Mr speaker, Could you say that again but like make it longer?*
 
 * A Progressive Web App (PWA) is a **web app** that uses **modern web technlogies** such as web app manifest, service workers and IndexedDB to deliver an experience that is **fast**, **reliable** and **engaging**.
-A PWA is expected to **harness the power of the platform** it's on and **gracefully adapt** to situation changes such as loss of internet connection.]
+A PWA is expected to **harness the power of the platform** it's on and **gracefully adapt** to situation changes such as loss of internet connection or a user on an older browser.]
 
 ---
 
@@ -83,7 +82,7 @@ name: Do you need a PWA
 class: a-slide, middle
 notes: [Fast]Both in illusion and actuality,[Increased Engagement]Push notifications,[Native Feel]Live on home screen and app launcher
 
-## Should you progressively enhance your web app?
+## Should you Progressively enhance your web app?
 
 *To quote an obnoxious high school girl:*&nbsp; **" DUHH!!!! 🙄"**
 
@@ -116,11 +115,12 @@ class: a-slide, middle
 
 1. IndexedDB
 
+1. Offline first
+
 ---
 
 name: Flipkart Intro
 class: a-slide, middle
-actions: [reveal]Reveal defn.,[video]Play Demo
 
 # Demo time
 
@@ -140,6 +140,7 @@ After shipping their PWA:
 
 name: Flipkart Video
 class: a-slide, full
+actions: [video]Play Demo
 
 <iframe width="100%" height="100%" src="https://www.youtube.com/embed/RJ1h-GiRh1E?rel=0&amp;controls=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
@@ -160,9 +161,7 @@ class: a-slide, middle
 
   * PWA technologies don't magically fix all your app's problems
 
-    * *They build upon the existing experience*
-
-    * *First optimize your traditional wep app*
+    * *Build upon the existing app, so optimize that first*
 
   * Not all PWA technologies work on every browser
 
@@ -194,9 +193,7 @@ class: a-slide, middle
 
   Make your app fast:
 
-  * Use placeholders until content loads *e.g. dominant color for images*
-
-  * Use **lightweight** loaders / state change notifiers
+  * Create illusion of speed (*placeholders, **lightweight** loaders*)
 
   * (*when possible*) Find ways around traditional form input
 
@@ -204,7 +201,7 @@ class: a-slide, middle
 
   * Use alternative solutions to long tasks
 
-    * *One Click SignIn, Web Pay API*
+    * *Email / One Click SignIn, Web Pay API*
   
   * Use web workers for memory intensive tasks
 
@@ -231,17 +228,15 @@ Give your app a native feel (*think beyond links and pages*)
 
   * Enhance user input ( *don't default to input boxes* )
 
-  * Add microinteractions
+  * Feedback, feedback, feedback (*microinteractions, alerts, toasts*)
+
+  * Reward successfull interactions ( *nice message, graphic* )
   
   * Make state changes smooth, snappy and intuitive (*transitions and animations*)
 
   * Customize empty states screens and error screens (*e.g no network*)
-  
-  * Reward successfull interactions ( *nice message, graphic* )
 
   * Use context links ( *tel: +255 7....*, *wa.me/155...?text=I'm int...* )
-
-  * Feedback, feedback, feedback
 
 ---
 
@@ -281,19 +276,28 @@ class: a-slide, middle
 
   * Most users are probably on 3G or lower
 
-  * Use Cache API and IndexedDB for file and content caching
+  * Use Service Worker with IndexedDB for content caching
 
   * Notify users on network state changes and give them options
 
     * E.g. *Google search caches search queries, replays them when 
     connections is next available then notifies user*
 
-* Use analytics tools to track app usage
+---
+
+name: Track app Usage
+class: a-slide, middle
+## PWA beyond the basics cont...
+
+* Track app Usage
+
+  * Use analytics tools to track app usage
 
   * Which features are never used 
-  (* hamburger menu for tz websites *)
+  (* hamburger menu for old ipf website *)
 
-  * Experiment with unfamiliar interactions or content structure
+  * Experiment with unfamiliar features or content structure
+      * (* Yahoo Digest design *)
 
 ---
 
